@@ -1,0 +1,119 @@
+---
+title-block-banner: true
+title: "Something1"
+subtitle: "Something2"
+date: 2023-04-03
+author: "Someone"
+institute: "Something3"
+format:
+  html:
+  #pdf:
+    #documentclass: scrartcl
+    #papersize: a4
+    toc: true
+    number-sections: true
+    lot: true
+    lof: true
+    code-fold: true
+    #df-print: paged
+    fig-width: 15
+    fig-height: 15
+    #fontfamily: libertinus
+    #colorlinks: true
+execute:
+  warning: false
+  message: false
+  echo: false
+---
+
+# Analysis With R 
+
+## Load Packages
+
+```{r}
+#| eval: false
+
+library(tidyverse)
+library(reticulate)
+library(knitr)
+library(kableExtra)
+options(dplyr.summarise.inform = FALSE)
+```
+
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+#import seaborn as sns
+#import sklearn 
+#import itertools
+#import os
+#from IPython.display import display, Markdown # for dynamic documentation
+#from tabulate import tabulate # for dynamic documentation
+#from pandas.api.types import CategoricalDtype # for factoring categorical variables
+#from sklearn.metrics import confusion_matrix #, accuracy_score, precision_score, recall_score, f1_score
+
+#pd.set_option('display.max_rows', 100)
+# pd.set_option('display.max_columns', 10)
+# pd.set_option('display.width', 1000)
+#pd.options.mode.chained_assignment = None 
+```
+
+## Data Load
+
+```{python}
+# Long form data generation
+data1 = {'dataid': np.repeat(range(0,100), 6),
+        'cycle': np.tile(range(6), 100),
+        'rfu': np.random.randn(600),
+        'scenario': np.repeat('scenario00',600),
+        'template': np.repeat([chr(i) for i in range(65, 71)],100)}
+
+# Convert to pandas DataFrame
+unnested_dsp_error_data = pd.DataFrame(data1)
+
+def plot_function(dataid_list,title=None,x_limits=None,y_limits=None):
+  temp2=unnested_dsp_error_data[unnested_dsp_error_data.dataid.isin(dataid_list)]
+  plt.title(title)
+  for i in dataid_list:
+    temp=unnested_dsp_error_data[(unnested_dsp_error_data.dataid==i)]
+    plt.plot(temp.cycle,temp.rfu)
+    if x_limits or y_limits:
+      plt.ylim(x_limits,y_limits)
+    else:
+      plt.ylim(temp2.rfu.min()*0.9,temp2.rfu.max()*1.1)
+```
+
+```{python}
+#| label: grand_signals
+#| fig-cap: "Grand Signals"
+#| echo: fenced
+
+error_dataid=unnested_dsp_error_data.dataid.unique().tolist()
+
+plot_function(error_dataid)
+plt.show()
+```
+
+```{python}
+#| label: grouped_signals
+#| fig-cap: "Grouped Signals"
+#| fig-subcap: 
+#|   - "A"
+#|   - "B"
+#|   - "C"
+#|   - "D"
+#|   - "E"
+#|   - "F"
+#| layout-ncol: 2
+#| echo: fenced
+
+template_list=[chr(i) for i in range(65, 71)]
+
+for template in template_list:
+  temp_dataid=unnested_dsp_error_data[unnested_dsp_error_data.template==template].dataid.unique()
+  plot_function(temp_dataid,title=template)
+  plt.show()
+
+```
+
