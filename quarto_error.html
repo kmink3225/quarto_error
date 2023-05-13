@@ -73,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body>
+<body class="fullcontent">
 
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
@@ -112,37 +112,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     
   
   </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#analysis-with-r" id="toc-analysis-with-r" class="nav-link active" data-scroll-target="#analysis-with-r"><span class="header-section-number">1</span> Analysis With R</a>
-  <ul class="collapse">
-  <li><a href="#load-packages" id="toc-load-packages" class="nav-link" data-scroll-target="#load-packages"><span class="header-section-number">1.1</span> Load Packages</a></li>
-  <li><a href="#data-load" id="toc-data-load" class="nav-link" data-scroll-target="#data-load"><span class="header-section-number">1.2</span> Data Load</a></li>
-  </ul></li>
-  </ul>
-</nav>
-</div>
+
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<section id="analysis-with-r" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Analysis With R</h1>
-<section id="load-packages" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="load-packages"><span class="header-section-number">1.1</span> Load Packages</h2>
+<section id="analysis-with-r" class="level1">
+<h1>Analysis With R</h1>
+<section id="load-packages" class="level2">
+<h2 class="anchored" data-anchor-id="load-packages">Load Packages</h2>
 </section>
-<section id="data-load" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="data-load"><span class="header-section-number">1.2</span> Data Load</h2>
-<div class="cell">
+<section id="data-load" class="level2">
+<h2 class="anchored" data-anchor-id="data-load">Data Load</h2>
+<div class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grand_signals</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Grand Signals"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Grand Signals</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>error_dataid<span class="op">=</span>unnested_dsp_error_data.dataid.unique().tolist()</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -150,10 +138,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div class="cell-output cell-output-display">
+<div id="grand_signals" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="quarto_error_files/figure-html/grand_signals-1.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="quarto_error_files/figure-html/grand_signals-output-1.png" width="569" height="411" class="figure-img"></p>
 <figcaption class="figure-caption">Grand Signals</figcaption>
 </figure>
 </div>
@@ -164,14 +152,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grouped_signals</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Grouped Signals"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Grouped Signals</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-subcap:</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - "A"</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - "B"</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - "C"</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - "D"</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - "E"</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - "F"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - A</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - B</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - C</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - D</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - E</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#|   - F</span></span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#| layout-ncol: 2</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>template_list<span class="op">=</span>[<span class="bu">chr</span>(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">65</span>, <span class="dv">71</span>)]</span>
@@ -182,57 +170,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  plt.show()</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell quarto-layout-panel">
+<div id="grouped_signals" class="cell quarto-layout-panel" data-execution_count="4">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 49.4%;justify-content: center;">
+<div id="grouped_signals-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="quarto_error_files/figure-html/grouped_signals-3.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="quarto_error_files/figure-html/grouped_signals-output-1.png" class="img-fluid figure-img" width="569"></p>
+<figcaption class="figure-caption">A</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.6%;justify-content: center;">
+<div id="grouped_signals-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="quarto_error_files/figure-html/grouped_signals-output-2.png" class="img-fluid figure-img" width="582"></p>
+<figcaption class="figure-caption">B</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="grouped_signals-3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="quarto_error_files/figure-html/grouped_signals-output-3.png" class="img-fluid figure-img" width="569"></p>
 <figcaption class="figure-caption">C</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="grouped_signals-4" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="quarto_error_files/figure-html/grouped_signals-4.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="quarto_error_files/figure-html/grouped_signals-output-4.png" class="img-fluid figure-img" width="569"></p>
 <figcaption class="figure-caption">D</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="grouped_signals-5" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="quarto_error_files/figure-html/grouped_signals-5.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="quarto_error_files/figure-html/grouped_signals-output-5.png" class="img-fluid figure-img" width="569"></p>
 <figcaption class="figure-caption">E</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
+<div class="cell-output cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div id="grouped_signals-6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="quarto_error_files/figure-html/grouped_signals-6.png" class="img-fluid figure-img" width="1440"></p>
+<p><img src="quarto_error_files/figure-html/grouped_signals-output-6.png" class="img-fluid figure-img" width="569"></p>
 <figcaption class="figure-caption">F</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="quarto_error_files/figure-html/grouped_signals-7.png" class="img-fluid figure-img" width="1440"></p>
-<figcaption class="figure-caption">A</figcaption>
-</figure>
-</div>
-</div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="quarto_error_files/figure-html/grouped_signals-8.png" class="img-fluid figure-img" width="1440"></p>
-<figcaption class="figure-caption">B</figcaption>
 </figure>
 </div>
 </div>

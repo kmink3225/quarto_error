@@ -7,19 +7,7 @@ author: "Someone"
 institute: "Something3"
 format:
   html:
-  #pdf:
-    #documentclass: scrartcl
-    #papersize: a4
-    toc: true
-    number-sections: true
-    lot: true
-    lof: true
     code-fold: true
-    #df-print: paged
-    fig-width: 15
-    fig-height: 15
-    #fontfamily: libertinus
-    #colorlinks: true
 execute:
   warning: false
   message: false
@@ -44,19 +32,6 @@ options(dplyr.summarise.inform = FALSE)
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-#import seaborn as sns
-#import sklearn 
-#import itertools
-#import os
-#from IPython.display import display, Markdown # for dynamic documentation
-#from tabulate import tabulate # for dynamic documentation
-#from pandas.api.types import CategoricalDtype # for factoring categorical variables
-#from sklearn.metrics import confusion_matrix #, accuracy_score, precision_score, recall_score, f1_score
-
-#pd.set_option('display.max_rows', 100)
-# pd.set_option('display.max_columns', 10)
-# pd.set_option('display.width', 1000)
-#pd.options.mode.chained_assignment = None 
 ```
 
 ## Data Load
@@ -66,7 +41,6 @@ import matplotlib.pyplot as plt
 data1 = {'dataid': np.repeat(range(0,100), 6),
         'cycle': np.tile(range(6), 100),
         'rfu': np.random.randn(600),
-        'scenario': np.repeat('scenario00',600),
         'template': np.repeat([chr(i) for i in range(65, 71)],100)}
 
 # Convert to pandas DataFrame
