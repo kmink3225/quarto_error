@@ -1,0 +1,39 @@
+---
+output: html_document
+engine: knitr
+---
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+```
+
+```{python}
+#| label: fig-one_plot
+#| fig-cap: "one_plot"
+#| fig-subcap: 
+#|     - "A"
+#| eval: true  
+
+plt.plot([0])
+plt.show()
+
+```
+
+
+```{python}
+#| layout-ncol: 2
+#| label: fig-grouped_signals
+#| fig-cap: "Grouped Signals"
+#| fig-subcap: 
+#|     - "A"
+#|     - "B"
+#|     - "C"
+#|     - "D"
+#|     - "E"
+#|     - "F"
+
+for i in range(1, 7):
+  plt.plot([i])
+  plt.show()
+```

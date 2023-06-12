@@ -1,0 +1,100 @@
+---
+format: html
+engine: knitr
+---
+
+```{r}
+library(tidyverse)
+library(reticulate)
+library(knitr)
+library(kableExtra)
+options(dplyr.summarise.inform = FALSE)
+
+use_python('C:/Users/kmkim/.conda/envs/study')
+py_config()
+```
+
+```{python}
+#| layout-ncol: 2
+#| label: fig-plots
+#| fig-cap: "Grouped plots"
+#| fig-subcap: 
+#|     - "A"
+#|     - "B"
+#|     - "C"
+#|     - "D"
+#|     - "E"
+#|     - "F"
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd 
+
+for i in range(1, 7):
+  plt.plot([i])
+  plt.show()
+```
+
+
+```{python}
+#| echo: fenced
+
+
+# Long form data generation
+data1 = {'dataid': np.repeat(range(0,100), 6),
+        'cycle': np.tile(range(6), 100),
+        'rfu': np.random.randn(600),
+        'template': np.repeat([chr(i) for i in range(65, 71)],100)}
+
+# Convert to pandas DataFrame
+unnested_dsp_error_data = pd.DataFrame(data1)
+
+def plot_function(dataid_list,title=None,x_limits=None,y_limits=None):
+  temp2=unnested_dsp_error_data[unnested_dsp_error_data.dataid.isin(dataid_list)]
+  plt.title(title)
+  for i in dataid_list:
+    temp=unnested_dsp_error_data[(unnested_dsp_error_data.dataid==i)]
+    plt.plot(temp.cycle,temp.rfu)
+    if x_limits or y_limits:
+      plt.ylim(x_limits,y_limits)
+    else:
+      plt.ylim(temp2.rfu.min()*0.9,temp2.rfu.max()*1.1)
+
+```
+
+
+```{python}
+#| label: grand_signals
+#| fig-cap: "Grand Signals"
+#| echo: fenced
+
+error_dataid=unnested_dsp_error_data.dataid.unique().tolist()
+
+plot_function(error_dataid)
+plt.show()
+```
+
+
+```{python}
+#| label: fig-grouped_signals
+#| fig-cap: "Grouped Signals"
+#| fig-subcap: 
+#|   - "A"
+#|   - "B"
+#|   - "C"
+#|   - "D"
+#|   - "E"
+#|   - "F"
+#| layout-ncol: 2
+#| echo: fenced
+
+
+template_list=[chr(i) for i in range(65, 71)]
+
+for template in template_list:
+  temp_dataid=unnested_dsp_error_data[unnested_dsp_error_data.template==template].dataid.unique()
+  plot_function(temp_dataid,title=template)
+  plt.show()
+
+```
+
